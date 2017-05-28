@@ -1,4 +1,9 @@
-local_resinos: {}
+local_resinos:
+  app-name: superliminal
+  build-triggers:
+    - Dockerfile: 5addafd7943b036dc39938c80117b943d1dc47757a536e088bbd7a711a638ece
+  environment:
+    - RESIN_HOST_CONFIG_gpu_mem=160
 uuid: 52b1714945bf59816a9a95aedcad1f10
 destination: /usr/src/app
 ignore:

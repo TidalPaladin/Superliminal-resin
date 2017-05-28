@@ -23,8 +23,10 @@ RUN apt-get clean && apt-get update && apt-get upgrade -y && apt-get install -y 
   python-dev \
   python-pip \
   git \
+  fbset \
   alsa-base \
   alsa-utils \
+  exfat-fuse \
   kodi && rm -rf /var/lib/apt/lists/*
 
 # Configure for Kodi
@@ -39,7 +41,9 @@ usermod -a -G plugdev root && \
 usermod -a -G tty root
 
 # Set npm
-RUN npm config set unsafe-perm true
+RUN npm config set unsafe-perm true \
+  pip install sh \
+  mkdir -p /data/Pictures
 
 # Uncomment if you want to Configure for pHAT DAC
 # COPY ./Dockerbin/asound.conf /etc/asound.conf
@@ -57,13 +61,27 @@ COPY "$SOURCEFOLDER/app/package.json" ./
 RUN JOBS=MAX npm i --production
 
 # Move app to filesystem
-COPY "$SOURCEFOLDER/app" ./
+COPY "$SOURCEFOLDER/app/plugin.dbmc" ./ \
+  "$SOURCEFOLDER/app/plugin.dbmc.addon_data" ./ \
+  "$SOURCEFOLDER/app/" /usr/src/app/
 
 # Move to /
 WORKDIR /
 
 ## uncomment if you want systemd
 ENV INITSYSTEM on
+
+ENV RESIN_HOST_CONFIG_gpu_mem 160
+ENV DBX_FOLDER 'TEST-flyers'
+ENV STAYTIME 10
+ENV SHUFFLE 'false'
+ENV EFFECTS 'false'
+ENV WEBSRV 'true'
+ENV WEB_USR 'superliminal'
+ENV WEB_PASS 'Cowboy1!'
+ENV WEB_PORT 8080
+
+ENV DBX_FOLDER 'TEST-flyers'
 
 # Start app
 CMD ["bash", "/usr/src/app/start.sh"]

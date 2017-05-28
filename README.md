@@ -40,6 +40,13 @@ Set this in the Environmental Configuration panel.
 |------------- | ----- |
 | **PHAT_DAC** | `1`   |
 
+
+Set this in the Environmental Configuration panel.
+
+| Name         | Value |
+|------------- | ----- |
+| **DBX_FOLDER** | `YOUR FOLDER`   |
+
 ## License
 
 Copyright 2016 Rulemotion Ltd.

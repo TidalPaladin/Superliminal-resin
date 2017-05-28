@@ -1,0 +1,14 @@
+<settings>
+    <setting id="access_token" value="" />
+    <setting id="cachepath" value="" />
+    <setting id="filefilter" value="true" />
+    <setting id="notify_server_port" value="38147" />
+    <setting id="passcode" value="" />
+    <setting id="passcodetimeout" value="30" />
+    <setting id="remotepath" value="" />
+    <setting id="session_id" value="" />
+    <setting id="streammedia" value="false" />
+    <setting id="syncfreq" value="5" />
+    <setting id="synchronisation" value="false" />
+    <setting id="syncpath" value="" />
+</settings>
